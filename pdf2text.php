@@ -5,6 +5,9 @@ use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 use MicrosoftAzure\Storage\Blob\Models\ListBlobsOptions;
 use Smalot\PdfParser\Parser;
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 // Configuración
 $connectionString = getenv("AZURE_STORAGE_CONNECTION_STRING");
 $containerNamePdf = "pdfcontainercm";  // Nombre de tu contenedor de PDFs
