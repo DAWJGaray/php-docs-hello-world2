@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestor de archivos ZIP en Azure Blob</title>
+</head>
+<body>
+    
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
@@ -47,15 +54,8 @@ function saveTextToBlob($text, $containerName, $blobName) {
 $listOptions = new ListBlobsOptions();
 $blobList = $blobClient->listBlobs($containerNamePdf, $listOptions);
 $blobs = $blobList->getBlobs();
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Gestor de archivos ZIP en Azure Blob</title>
-</head>
-<body>
     
-    // Iterar sobre los blobs (PDFs) y extraer el texto
+// Iterar sobre los blobs (PDFs) y extraer el texto
 foreach ($blobs as $blob) {
     $blobName = $blob->getName();
     
@@ -74,8 +74,8 @@ foreach ($blobs as $blob) {
     echo "<p>Fichero $blobName extraído y guardado en: $textBlobName\n;</p>"
     //https://almacenclasecm.blob.core.windows.net/pdfcontainercm/U3IntroSO.pdf
     }
-    <h2><a href="https://almacenclasecm.blob.core.windows.net/textcontainercm">Texto</a></h2>
+?>
+
+<h2><a href="https://almacenclasecm.blob.core.windows.net/textcontainercm">Texto</a></h2>
 </body>
 </html>
-        
-?>
