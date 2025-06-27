@@ -6,8 +6,8 @@ use MicrosoftAzure\Storage\Blob\Models\ListBlobsOptions;
 use Smalot\PdfParser\Parser;
 
 //Sacar errores
-//ini_set('display_errors', 1);
-//error_reporting(E_ALL);
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 // Configuración
 $connectionString = getenv("AZURE_STORAGE_CONNECTION_STRING");
@@ -54,10 +54,6 @@ $blobs = $blobList->getBlobs();
     <title>Gestor de archivos ZIP en Azure Blob</title>
 </head>
 <body>
-    <h1>Archivos en el contenedor '<?= htmlspecialchars(
-        $containerNamePdf
-    ) ?>'</h1>
-    <ul>
     
     // Iterar sobre los blobs (PDFs) y extraer el texto
 foreach ($blobs as $blob) {
@@ -75,8 +71,7 @@ foreach ($blobs as $blob) {
     // Guardar el texto extraído en el contenedor de texto
     saveTextToBlob($text, $containerNameText, $textBlobName);
 
-    
-    echo "Fichero $blobName extraído y guardado en: $textBlobName\n";
+    echo "<p>Fichero $blobName extraído y guardado en: $textBlobName\n;</p>"
     //https://almacenclasecm.blob.core.windows.net/pdfcontainercm/U3IntroSO.pdf
 
     <h2><a href="https://almacenclasecm.blob.core.windows.net/textcontainercm">Texto</a></h2>
