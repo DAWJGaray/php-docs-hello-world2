@@ -48,7 +48,18 @@ $listOptions = new ListBlobsOptions();
 $blobList = $blobClient->listBlobs($containerNamePdf, $listOptions);
 $blobs = $blobList->getBlobs();
 
-// Iterar sobre los blobs (PDFs) y extraer el texto
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestor de archivos ZIP en Azure Blob</title>
+</head>
+<body>
+    <h1>Archivos en el contenedor '<?= htmlspecialchars(
+        $containerNamePdf
+    ) ?>'</h1>
+    <ul>
+    
+    // Iterar sobre los blobs (PDFs) y extraer el texto
 foreach ($blobs as $blob) {
     $blobName = $blob->getName();
     
@@ -63,7 +74,21 @@ foreach ($blobs as $blob) {
     
     // Guardar el texto extraído en el contenedor de texto
     saveTextToBlob($text, $containerNameText, $textBlobName);
+
     
-    echo "Fichero $blobName extraído y guardado en: $textBlobName\n";
-}
+    //echo "Fichero $blobName extraído y guardado en: $textBlobName\n";
+    //https://almacenclasecm.blob.core.windows.net/pdfcontainercm/U3IntroSO.pdf
+        <li><p>Fichero </p>                
+                <a href="<?= htmlspecialchars(
+                    $blob->getUrl()
+                ) ?>" target="_blank">
+                    <?= htmlspecialchars($blob->getName()) ?>
+                </a>
+            <p> extraído y guardado en <b>echo "$textBlobName"</b></p> 
+        </li>
+    </ul>
+    <h2>Subir nuevo archivo ZIP</h2>
+</body>
+</html>
+        
 ?>
