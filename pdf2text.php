@@ -73,7 +73,7 @@ foreach ($blobs as $blob) {
 
     echo "<p>Fichero $blobName extraído y guardado en: $textBlobName\n;</p>"
     //https://almacenclasecm.blob.core.windows.net/pdfcontainercm/U3IntroSO.pdf
-
+    }
     <h2><a href="https://almacenclasecm.blob.core.windows.net/textcontainercm">Texto</a></h2>
 </body>
 </html>
