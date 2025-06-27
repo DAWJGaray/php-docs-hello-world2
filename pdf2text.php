@@ -76,18 +76,10 @@ foreach ($blobs as $blob) {
     saveTextToBlob($text, $containerNameText, $textBlobName);
 
     
-    //echo "Fichero $blobName extraído y guardado en: $textBlobName\n";
+    echo "Fichero $blobName extraído y guardado en: $textBlobName\n";
     //https://almacenclasecm.blob.core.windows.net/pdfcontainercm/U3IntroSO.pdf
-        <li><p>Fichero </p>                
-                <a href="<?= htmlspecialchars(
-                    $blob->getUrl()
-                ) ?>" target="_blank">
-                    <?= htmlspecialchars($blob->getName()) ?>
-                </a>
-            <p> extraído y guardado en <b>echo "$textBlobName"</b></p> 
-        </li>
-    </ul>
-    <h2>Subir nuevo archivo ZIP</h2>
+
+    <h2><a href="https://almacenclasecm.blob.core.windows.net/textcontainercm">Texto</a></h2>
 </body>
 </html>
         
