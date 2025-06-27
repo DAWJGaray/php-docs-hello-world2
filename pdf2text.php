@@ -5,8 +5,9 @@ use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 use MicrosoftAzure\Storage\Blob\Models\ListBlobsOptions;
 use Smalot\PdfParser\Parser;
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+//Sacar errores
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);
 
 // Configuración
 $connectionString = getenv("AZURE_STORAGE_CONNECTION_STRING");
@@ -63,6 +64,6 @@ foreach ($blobs as $blob) {
     // Guardar el texto extraído en el contenedor de texto
     saveTextToBlob($text, $containerNameText, $textBlobName);
     
-    echo "Texto extraído y guardado en: $textBlobName\n";
+    echo "Fichero $blobName extraído y guardado en: $textBlobName\n";
 }
 ?>
