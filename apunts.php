@@ -7,8 +7,8 @@ use MicrosoftAzure\Storage\Blob\Models\ListBlobsOptions;
 use Smalot\PdfParser\Parser;
 
 //Sacar errores
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);
 
 $connectionString = getenv("AZURE_STORAGE_CONNECTION_STRING");
 //"DefaultEndpointsProtocol=https;AccountName=YOUR_ACCOUNT_NAME;AccountKey=YOUR_ACCOUNT_KEY;EndpointSuffix=core.windows.net";
@@ -130,8 +130,9 @@ try {
     </style>
 </head>
 <body>
+    <h1>Apunts Sistemes Informàtics</h1>
     <div class="container">
-        <h1>Contenidos del contenedor: <?= htmlspecialchars($containerNamePdf) ?></h1>
+        <h1>Originals i editables: continguts dels contenidors <?= htmlspecialchars($containerNamePdf) ?> y <?= htmlspecialchars($containerNameText) ?> </h1>
         <ul>
             <?php foreach ($blobs as $blob): ?>
                 <li class="pdf">
@@ -148,7 +149,7 @@ try {
         </ul>
     </div>
     <div class="container">
-        <h1>Contenidos del contenedor: <?= htmlspecialchars($containerNameTranslated) ?></h1>
+        <h1>Traduccions: continguts del contenidor: <?= htmlspecialchars($containerNameTranslated) ?></h1>
         <ul>
             <?php foreach ($blobs2 as $blob): ?>
                 <li class="translated">
