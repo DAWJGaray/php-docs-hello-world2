@@ -58,9 +58,13 @@ $listOptions = new ListBlobsOptions();
 $blobList = $blobClient->listBlobs($containerNamePdf, $listOptions);
 $blobs = $blobList->getBlobs();
 
+2>
+    
 // Iterar sobre los blobs (PDFs) y extraer el texto
-foreach ($blobs as $blob) {
+//foreach ($blobs as $blob) {
+<?php foreach ($blobs as $blob): ?>    
     $blobName = $blob->getName();
+    $blobUrl = $blob->getUrl();    
     
     // Leer el contenido del PDF desde Blob Storage
     $pdfContent = readPdfFromBlob($blobName, $containerNamePdf);
@@ -74,16 +78,15 @@ foreach ($blobs as $blob) {
     // Guardar el texto extraído en el contenedor de texto
     saveTextToBlob($text, $containerNameText, $textBlobName);
     
-    echo "Fichero $blobName extraído y guardado en: $textBlobName\n";
+    //echo "Fichero $blobName extraído y guardado en: $textBlobName\n";
         
         <li>Ejemplo</li>
         <li>
-                <a href="<?= htmlspecialchars(
-                    $blob->getUrl()
-                ) ?>" target="_blank">
-                    <?= htmlspecialchars($blob->getName()) ?>
+                <a href="<?= htmlspecialchars($blobUrl) ?>" target="_blank">
+                    "<?= htmlspecialchars($blobName) ?>"
                 </a>
         </li>    
+        <?php endforeach; ?>
     </ul>
     <hr>
     <h2><a href="https://almacenclasecm.blob.core.windows.net/textcontainercm" target="blank">Fitxers editables</a>(valencià)</h2>
@@ -95,6 +98,5 @@ foreach ($blobs as $blob) {
     <ul>
         <li>Ej</li>
     </ul>
-    }
-2>
+    
 </body>
