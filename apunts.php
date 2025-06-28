@@ -73,6 +73,14 @@ foreach ($blobs as $blob) {
     echo "Fichero $blobName extraído y guardado en: $textBlobName\n";
 }
 
+try {
+   // Listar los blobs (archivos PDF) en el contenedor
+    $listTranslatedOptions = new ListBlobsOptions();
+    $blobList2 = $blobClient->listBlobs($containerNameTranslated, $listTranslatedOptions);
+    $blobs2 = $blobList2->getBlobs();
+} catch (ServiceException $e) {
+    die("Error al conectar con Azure Storage: " . $e->getMessage());
+}
 ?>
 
 <!DOCTYPE html>
@@ -139,5 +147,17 @@ foreach ($blobs as $blob) {
             <?php endforeach; ?>
         </ul>
     </div>
-</body>
+    <div class="container">
+        <h1>Contenidos del contenedor: <?= htmlspecialchars($containerNameTranslated) ?></h1>
+        <ul>
+            <?php foreach ($blobs2 as $blob): ?>
+                <li class="translated">
+                    <a href="https://almacenclasecm.blob.core.windows.net/<?= $containerNameTranslated ?>/<?= urlencode($blob->getName()) ?>" target="_blank">
+                        <?= htmlspecialchars($blob->getName()) ?>
+                    </a>
+                </li>          
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    </body>
 </html>
