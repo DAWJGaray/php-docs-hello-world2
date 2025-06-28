@@ -123,18 +123,11 @@ foreach ($blobs as $blob) {
                         <?= htmlspecialchars($blob->getName()) ?>
                     </a>
                 </li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
-    <div class="container">
-        <h1>Contenidos del contenedor: <?= htmlspecialchars($containerNameText) ?></h1>
-        <ul>
-            <?php foreach ($blobs as $blob): ?>
                 <li>
                     <a href="https://almacenclasecm.blob.core.windows.net/<?= $containerNameText ?>/<?= urlencode($textBlobName) ?>" target="_blank">
                         <?= htmlspecialchars($textBlobName) ?>
                     </a>
-                </li>
+                </li>            
             <?php endforeach; ?>
         </ul>
     </div>
