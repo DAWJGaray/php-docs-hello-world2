@@ -103,9 +103,17 @@ foreach ($blobs as $blob) {
         }
         li {
             margin: 10px 0;
-            background: #e8f0fe;
             padding: 10px;
             border-radius: 5px;
+        }
+        .pdf {
+            background: #e8f0fe;        
+        }
+        .text{
+            background: #e8fefb;        
+        }
+        .translated{
+            background: #fee8ee;
         }
         a {
             text-decoration: none;
@@ -118,12 +126,12 @@ foreach ($blobs as $blob) {
         <h1>Contenidos del contenedor: <?= htmlspecialchars($containerNamePdf) ?></h1>
         <ul>
             <?php foreach ($blobs as $blob): ?>
-                <li>
+                <li class="pdf">
                     <a href="https://almacenclasecm.blob.core.windows.net/<?= $containerNamePdf ?>/<?= urlencode($blob->getName()) ?>" target="_blank">
                         <?= htmlspecialchars($blob->getName()) ?>
                     </a>
                 </li>
-                <li>
+                <li class="text">
                     <a href="https://almacenclasecm.blob.core.windows.net/<?= $containerNameText ?>/<?= urlencode($textBlobName) ?>" target="_blank">
                         <?= htmlspecialchars($textBlobName) ?>
                     </a>
